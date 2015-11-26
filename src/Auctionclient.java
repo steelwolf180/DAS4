@@ -1,8 +1,7 @@
-
-import java.rmi.Naming;
-import java.rmi.RemoteException;
 import java.net.MalformedURLException;
+import java.rmi.Naming;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 
 /**
  * Created by max on 10/20/15.
@@ -12,14 +11,9 @@ public class Auctionclient {
 
         try {
         // Create the reference to the remote object through the rmiregistry
-            calculator c = (calculator)
+            Datacontrol d = (Datacontrol)
                     Naming.lookup("rmi://localhost/AuctionService");
-            // Now use the reference c to call remote methods
-            System.out.println("3+21="+ c.add(3, 21) );
-            System.out.println("18-9="+ c.sub(18, 9) );
-            System.out.println("4*17="+ c.mul(4, 17) );
-            System.out.println("70/10="+ c.div(70, 10) );
-            System.out.println("2^5="+ c.pow(2, 5) );
+
         }
         // Catch the exceptions that may occur – bad URL, Remote exception
         // Not bound exception or the arithmetic exception that may occur in

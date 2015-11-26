@@ -1,5 +1,4 @@
-
-import java.rmi.Naming;//Import naming classes to bind to rmiregistry
+import java.rmi.Naming;
 
 /**
  * Created by max on 10/20/15.
@@ -10,8 +9,8 @@ public class Auctionserver {
     //N.b. it is possible to host multiple objects on a server
     //by repeating the following method.
         try {
-            calculator c = new calculatorimpl();
-            Naming.rebind("rmi://localhost/AuctionService", c);
+            Datacontrol d = new Datacontrolimpl();
+            Naming.rebind("rmi://localhost/AuctionService", d);
         } catch (Exception e) {
             System.out.println("Server Error: " + e);
         }

@@ -1,4 +1,4 @@
-import java.io.*;
+import java.io.Serializable;
 
 public class Bidder implements Serializable{
 
@@ -126,7 +126,7 @@ public class Bidder implements Serializable{
         return cashAmt+checkAmt+chargeAmt+chargeAmt2;
     }
 
-    public void importfromCVS (String arg)
+    public void infromCVS (String arg)
     {
         String[] results = getfromCVS (arg);
         try{
@@ -235,7 +235,7 @@ public class Bidder implements Serializable{
         return results;
     }
 
-    public String outAsCVS ()
+    public String outasCVS ()
     {
         String retString = "" + bidNum + ",";
 
