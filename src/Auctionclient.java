@@ -7,7 +7,7 @@ import java.rmi.NotBoundException;
 /**
  * Created by max on 10/20/15.
  */
-public class calculatorclient {
+public class Auctionclient {
     public static  void  main(String[] args){
 
         try {

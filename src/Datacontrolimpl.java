@@ -1,9 +1,21 @@
+import java.io.*;
+import java.util.*;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.Iterator;
 
+public class Datacontrolimpl extends java.rmi.server.UnicastRemoteObject implements Datacontol {
 
-public class calculatorimpl extends java.rmi.server.UnicastRemoteObject implements calculator {
+    private SortedMap<Integer, Bidder> bidders;
+    private SortedMap<String, Item> items;
+    private int cashierNumber;
 
-    public calculatorimpl() throws java.rmi.RemoteException {
+    public Datacontrolimpl() throws java.rmi.RemoteException {
         super();
+
+        bidders = Collection.synchronizedSortedMap(new TreeMap<Integer,Bidder>());
+        items = Collection.synchronizedSortedMap(new TreeMap<String,Item>());
+        cashiernum = 0;
     }
     public long add(long a, long b) throws java.rmi.RemoteException {
         return a + b;
