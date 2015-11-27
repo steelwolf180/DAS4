@@ -1,5 +1,6 @@
 /**
- * Created by max on 11/27/15.
+ * Done By: Ong Zong Bao
+ * StudentID:2167843O
  */
 
 import java.io.Serializable;
@@ -242,35 +243,5 @@ class Item implements Serializable
             retString = retString + "\"";
 
         return (retString);
-    }
-
-
-    public static void main (String[] args)
-    {
-        Item i1 = new Item("1", "Hello There", 50);
-        System.out.println (i1.outasCVS());
-
-        i1 = new Item("1", "Hello, There", 50);
-        System.out.println (i1.outasCVS());
-
-        i1 = new Item("1", "Hello \" There", 50);
-        System.out.println (i1.outasCVS());
-
-
-        i1.infromCVS ("Category 1,1,\"Hello, \"\"The\"\"re\",50,-1,0");
-        System.out.println ("Category: " + i1.getcategory());
-        System.out.println (i1.getitemnum());
-        System.out.println (i1.getdescr());
-        System.out.println (i1.getvalue());
-        System.out.println (i1.getbidder());
-        System.out.println (i1.getbidAmt());
-
-        System.out.println ();
-        i1.infromCVS (",,,,");
-        System.out.println (i1.getitemnum());
-        System.out.println (i1.getdescr());
-        System.out.println (i1.getvalue());
-        System.out.println (i1.getbidder());
-        System.out.println (i1.getbidAmt());
     }
 }

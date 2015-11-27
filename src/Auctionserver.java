@@ -1,8 +1,10 @@
+/**
+ * Done By: Ong Zong Bao
+ * StudentID:2167843O
+ */
+
 import java.rmi.Naming;
 
-/**
- * Created by max on 10/20/15.
- */
 public class Auctionserver {
 
     public Auctionserver() {

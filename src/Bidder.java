@@ -1,140 +1,194 @@
+/**
+ * Done By: Ong Zong Bao
+ * StudentID:2167843O
+ */
 import java.io.Serializable;
 
 public class Bidder implements Serializable{
 
-//default bidder account
-    private int bidNum;
-    private String name;
+    private int biddernum;
+    private String lname;
+    private String fname;
     private String phone;
     private int cashAmt;
     private int checkAmt;
-    private int checkNum;
+    private int checknum;
     private int chargeAmt;
     private int chargeAmt2;
-    private int cashierNum;
+    private int cashiernum;
     private int code;
 
     public Bidder()
     {
-        bidNum = -1;
-        name = "";
+        biddernum = -1;
+        lname = "";
+        fname = "";
         phone = "";
         cashAmt = 0;
         checkAmt = 0;
-        checkNum = -1;
+        checknum = -1;
         chargeAmt = 0;
         chargeAmt2 = 0;
-        cashierNum = 0;
+        cashiernum = 0;
         code = 0;
     }
 
     public Bidder(int num, String pName)
     {
-        bidNum = num;
-        name = pName;
+        biddernum = num;
+        lname = pName;
+        fname = "";
         phone = "";
         cashAmt = 0;
         checkAmt = 0;
-        checkNum = -1;
+        checknum = -1;
         chargeAmt = 0;
         chargeAmt2 = 0;
-        cashierNum = 0;
+        cashiernum = 0;
         code = 0;
     }
 
-    public int getBidNumber() {
-        return bidNum;
+    public void setbidernum(int val)
+    {
+        biddernum = val;
     }
 
-    public void setBidNumber(int bidNumber) {
-        this.bidNum = bidNumber;
+    public int getbiddernum ()
+    {
+        return biddernum;
     }
 
-    public String getName() {
-        return name;
+    public void setname (String val)
+    {
+        lname = val;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getname ()
+    {
+        return lname + ", " + fname;
     }
 
-    public String getPhone() {
+    public void setlname (String val)
+    {
+        lname = val;
+    }
+
+    public String getlname ()
+    {
+        return lname;
+    }
+
+    public void setfname (String val)
+    {
+        fname = val;
+    }
+
+    public String getfname ()
+    {
+        return fname;
+    }
+
+    public void setphone (String val)
+    {
+        phone = val;
+    }
+
+    public String getphone ()
+    {
         return phone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setcashAmt (int val)
+    {
+        cashAmt = val;
     }
 
-    public int getCashAmt() {
+    public int getcashAmt ()
+    {
         return cashAmt;
     }
 
-    public void setCashAmt(int cashAmt) {
-        this.cashAmt = cashAmt;
+    public void setcheckAmt (int val)
+    {
+        checkAmt = val;
     }
 
-    public int getCheckAmt() {
+    public int getcheckAmt ()
+    {
         return checkAmt;
     }
 
-    public void setCheckAmt(int checkAmt) {
-        this.checkAmt = checkAmt;
+    public void setchecknum (int val)
+    {
+        checknum = val;
     }
 
-    public int getCheckNum() {
-        return checkNum;
+    public int getchecknum ()
+    {
+        return checknum;
     }
 
-    public void setCheckNum(int checkNum) {
-        this.checkNum = checkNum;
+    public void setchargeAmt (int val)
+    {
+        chargeAmt = val;
     }
 
-    public int getChargeAmt() {
+    public int getchargeAmt ()
+    {
         return chargeAmt;
     }
 
-    public void setChargeAmt(int chargeAmt) {
-        this.chargeAmt = chargeAmt;
+    public void setchargeAmt2 (int val)
+    {
+        chargeAmt2 = val;
     }
 
-    public int getChargeAmt2() {
+    public int getchargeAmt2 ()
+    {
         return chargeAmt2;
     }
 
-    public void setChargeAmt2(int chargeAmt2) {
-        this.chargeAmt2 = chargeAmt2;
+    public int gettotalAmt ()
+    {
+        return cashAmt + checkAmt + chargeAmt + chargeAmt2;
     }
 
-    public int getCashierNum() {
-        return cashierNum;
+    public void setcode (int val)
+    {
+        code = val;
     }
 
-    public void setCashierNum(int cashierNum) {
-        this.cashierNum = cashierNum;
-    }
-
-    public int getCode() {
+    public int getcode ()
+    {
         return code;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setcashier (int val)
+    {
+        cashiernum = val;
     }
 
-    public int getTotalAmt(){
-        return cashAmt+checkAmt+chargeAmt+chargeAmt2;
+    public int getcashier ()
+    {
+        return cashiernum;
     }
 
-    public void infromCVS (String arg)
+    public void infromCVS ( String arg)
     {
         String[] results = getfromCVS (arg);
         try{
-            bidNum = Integer.parseInt (results[0]);
+            biddernum = Integer.parseInt (results[0]);
         }
-        catch (NumberFormatException e) {
-            bidNum = -1;
+        catch (NumberFormatException e)
+        {
+            biddernum = -1;
         }
+
+        results = getfromCVS (results[1]);
+        lname = results[0];
+
+        results = getfromCVS (results[1]);
+        fname = results[0];
 
         results = getfromCVS (results[1]);
         phone = results[0];
@@ -159,11 +213,11 @@ public class Bidder implements Serializable{
 
         results = getfromCVS (results[1]);
         try{
-            checkNum = Integer.parseInt (results[0]);
+            checknum = Integer.parseInt (results[0]);
         }
         catch (NumberFormatException e)
         {
-            checkNum = -1;
+            checknum = -1;
         }
 
         results = getfromCVS (results[1]);
@@ -186,19 +240,19 @@ public class Bidder implements Serializable{
 
         results = getfromCVS (results[1]);
         try{
-            cashierNum = Integer.parseInt (results[0]);
+            cashiernum = Integer.parseInt (results[0]);
         }
         catch (NumberFormatException e)
         {
-            cashierNum = 0;
+            cashiernum = 0;
         }
     }
 
     static public String [] getfromCVS (String arg)
     {
         String[] results = new String[2];
-        int end_Pos;
-        boolean CarryOn;
+        int endPos;
+        boolean goOn;
 
         if (arg.length() == 0)
         {
@@ -207,26 +261,26 @@ public class Bidder implements Serializable{
         }
         else if (arg.charAt(0) == '\"')
         {
-            end_Pos = 1;
-            CarryOn = true;
+            endPos = 1;
+            goOn = true;
 
-            while (CarryOn)
+            while (goOn)
             {
-                if (arg.charAt(end_Pos) != '\"')
-                    end_Pos++;
+                if (arg.charAt(endPos) != '\"')
+                    endPos++;
 
-                else if (end_Pos+1 >= arg.length())
-                    CarryOn = false;
+                else if (endPos+1 >= arg.length())
+                    goOn = false;
 
-                else if (arg.charAt(end_Pos+1) == '\"')
-                    end_Pos = end_Pos + 2;
+                else if (arg.charAt(endPos+1) == '\"')
+                    endPos = endPos + 2;
 
                 else
-                    CarryOn = false;
+                    goOn = false;
             }
-            String temp = arg.substring (1,end_Pos);
+            String temp = arg.substring (1,endPos);
             results[0] = temp.replaceAll("\"\"", "\"");
-            results[1] = arg.substring (end_Pos+2);
+            results[1] = arg.substring (endPos+2);
         }
         else
         {
@@ -237,14 +291,14 @@ public class Bidder implements Serializable{
 
     public String outasCVS ()
     {
-        String retString = "" + bidNum + ",";
+        String retString = "" + biddernum + ",";
 
-        retString = retString + putinCVS (name) + "," +
-
+        retString = retString + putinCVS (lname) + "," +
+                putinCVS (fname) + "," +
                 putinCVS (phone) + "," +
                 cashAmt + "," + checkAmt + "," +
-                checkNum + "," + chargeAmt + "," +
-                chargeAmt2 + "," + cashierNum;
+                checknum + "," + chargeAmt + "," +
+                chargeAmt2 + "," + cashiernum;
 
         return retString;
     }
@@ -270,6 +324,5 @@ public class Bidder implements Serializable{
 
         return (retString);
     }
-
 
 }

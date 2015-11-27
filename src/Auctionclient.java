@@ -1,11 +1,13 @@
+/**
+ * Done By: Ong Zong Bao
+ * StudentID:2167843O
+ */
+
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-/**
- * Created by max on 10/20/15.
- */
 public class Auctionclient {
     public static  void  main(String[] args){
 

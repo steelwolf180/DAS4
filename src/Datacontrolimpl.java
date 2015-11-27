@@ -1,3 +1,8 @@
+/**
+ * Done By: Ong Zong Bao
+ * StudentID:2167843O
+ */
+
 import java.io.*;
 import java.util.*;
 
@@ -12,8 +17,8 @@ public class Datacontrolimpl
     public Datacontrolimpl() throws java.rmi.RemoteException {
         super();
 
-        bidders = Collection.synchronizedSortedMap(new TreeMap<Integer,Bidder>());
-        items = Collection.synchronizedSortedMap(new TreeMap<String,Item>());
+        bidders = Collections.synchronizedSortedMap(new TreeMap<Integer,Bidder>());
+        items = Collections.synchronizedSortedMap(new TreeMap<String,Item>());
         cashierNum = 0;
     }
 
@@ -34,7 +39,7 @@ public class Datacontrolimpl
                 b1 = new Bidder();
                 b1.infromCVS(s1);
 
-                bidders.put ( b1.getBidNumber(), b1);
+                bidders.put ( b1.getbiddernum(), b1);
 
                 s1 = br.readLine();
             }
@@ -141,7 +146,7 @@ public class Datacontrolimpl
         bidItem = items.get (itemnum );
 
         // check if a bid has been made
-        if (noCheck == false && bidItem.getbidder() != -1)
+        if (!noCheck && bidItem.getbidder() != -1)
         {
             returnItem.setcode (-3); // item already has bid
             returnItem.makebid (bidItem.getbidder(), bidItem.getbidAmt());
@@ -173,7 +178,7 @@ public class Datacontrolimpl
     public Vector<String> getitemtypes ()
             throws java.rmi.RemoteException
     {
-        Vector<String> typeVector = new Vector<String> ();
+        Vector<String> typeVector = new Vector<> ();
 
         // for all items in the Item Map
         for (Map.Entry<String, Item> e : items.entrySet())
@@ -189,7 +194,7 @@ public class Datacontrolimpl
     public Vector<Item> getitemsfortype (String type)
             throws java.rmi.RemoteException
     {
-        Vector<Item> itemVector = new Vector<Item> ();
+        Vector<Item> itemVector = new Vector<> ();
 
         // for all items in the Item Map
         for (Map.Entry<String, Item> e : items.entrySet())
@@ -206,7 +211,7 @@ public class Datacontrolimpl
     public Vector<Item> getitemsforbidder (int bidderNum)
             throws java.rmi.RemoteException
     {
-        Vector<Item> itemVector = new Vector<Item> ();
+        Vector<Item> itemVector = new Vector<> ();
 
         // for all items in the Item Map
         for (Map.Entry<String, Item> e : items.entrySet())
@@ -223,11 +228,11 @@ public class Datacontrolimpl
     public Vector<Bidder> getbidderforcashier (int cnum)
             throws java.rmi.RemoteException
     {
-        Vector<Bidder> bidderVector = new Vector<Bidder> ();
+        Vector<Bidder> bidderVector = new Vector<> ();
 
         for (Map.Entry<Integer, Bidder> e : bidders.entrySet())
         {
-            if (cnum == 0 || e.getValue().getCashierNum() == cnum)
+            if (cnum == 0 || e.getValue().getcashier() == cnum)
             {
                 bidderVector.addElement(e.getValue());
             }
@@ -238,11 +243,11 @@ public class Datacontrolimpl
     public Vector<Bidder> findbiddernum (String s)
             throws java.rmi.RemoteException
     {
-        Vector<Bidder> bidderVector = new Vector<Bidder> ();
+        Vector<Bidder> bidderVector = new Vector<> ();
 
         for (Map.Entry<Integer, Bidder> e : bidders.entrySet())
         {
-            if (e.getValue().getName().toLowerCase().startsWith(s.toLowerCase()))
+            if (e.getValue().getname().toLowerCase().startsWith(s.toLowerCase()))
             {
                 bidderVector.addElement(e.getValue());
             }
@@ -262,9 +267,9 @@ public class Datacontrolimpl
     public boolean updatebidderrecord (Bidder newBidder)
             throws java.rmi.RemoteException
     {
-        if (validatebiddermnum(newBidder.getBidNumber()))
+        if (validatebiddermnum(newBidder.getbiddernum()))
         {
-            bidders.put (newBidder.getBidNumber(), newBidder);
+            bidders.put (newBidder.getbiddernum(), newBidder);
             return true;
         }
         else
